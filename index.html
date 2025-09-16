@@ -217,8 +217,9 @@
 
 
 <!-- HEADER con video -->
-<header id="inicio" >
-  <video autoplay muted loop playsinline preload="auto" id="videoHeader">
+<header id="inicio" style="background: url('img/fondo.jpg') no-repeat center center/cover;">
+  <video autoplay muted loop playsinline preload="auto" id="videoHeader" poster="img/fondo.jpg">
+    
     <source src="Curso.mp4" type="video/mp4">
   
   </video>
@@ -229,6 +230,18 @@
     <a href="#contacto" class="btn btn-tango" data-i18n="reserve">Reservar clase</a>
   </div>
 </header>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const video = document.getElementById("videoHeader");
+
+    video.play().catch(function () {
+      document.body.addEventListener("touchstart", function () {
+        video.play().catch(e => console.warn("No se pudo reproducir:", e));
+      }, { once: true });
+    });
+  });
+</script>
 
 <!-- BIOGRAFÍA -->
 <section id="biografia" class="bg-light text-center">
@@ -338,15 +351,3 @@
 
 </body>
 </html>
-
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-    const video = document.getElementById("videoHeader");
-    // Forzar reproducir cuando el usuario toca la pantalla (requerido en algunos móviles)
-    document.body.addEventListener('touchstart', () => {
-      if (video.paused) {
-        video.play().catch(e => console.warn("No se pudo reproducir el video:", e));
-      }
-    }, { once: true });
-  });
-</script>
