@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clases de Tango - Francisco Zeni</title>
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<!-- Bootstrap Icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+<style>
+  body {
+    font-family: 'Lato', sans-serif;
+    color: #f4f4f4;
+    background-color: #0c0c0c;
+  }
+  h1,h2,h3 {
+    font-family: 'Playfair Display', serif;
+    color: #d4af37;
+  }
+  .btn-tango {
+    background-color: #7b0b01;
+    color: #f4f4f4;
+    border-radius: 30px;
+    padding: 10px 25px;
+    border: 1px solid #d4af37;
+    transition: 0.3s;
+  }
+  .btn-tango:hover { background-color: #a4120e; color: #fff; }
+  .form-control:focus {
+    border-color: #d4af37;
+    box-shadow: 0 0 5px #d4af37;
+  }
+  /* Video Header */
+  header {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    color: white;
+    text-align: center;
+  }
+  header video {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    z-index: -1;
+  }
+  header .overlay {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.6);
+    z-index: 0;
+  }
+  header .content {
+    position: relative;
+    z-index: 1;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  /* Footer */
+  footer {
+    background: #111;
+    padding: 20px 0;
+    text-align: center;
+  }
+  footer a {
+    color: #d4af37;
+    font-size: 1.5rem;
+    margin: 0 10px;
+    transition: 0.3s;
+  }
+  footer a:hover {
+    color: #fff;
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <video autoplay muted loop playsinline>
+    <source src="tu-video.mp4" type="video/mp4">
+    Tu navegador no soporta video de fondo.
+  </video>
+  <div class="overlay"></div>
+  <div class="content">
+    <h1>Francisco Zeni</h1>
+    <p class="lead">Clases de Tango</p>
+    <a href="#reserva" class="btn btn-tango mt-3">Reservar Clase</a>
+  </div>
+</header>
+
+<!-- BIOGRAFÍA -->
+<section id="biografia" class="py-5 text-center bg-dark">
+  <div class="container">
+    <h2>Sobre mí</h2>
+    <p class="mt-3">Soy Francisco Zeni, bailarín y profesor de tango con más de 10 años de experiencia. Mi pasión es transmitir la esencia del tango con un enfoque cercano y profesional.</p>
+    <img src="tu-foto.jpg" class="rounded-circle mt-3" width="180" alt="Francisco Zeni">
+  </div>
+</section>
+
+<!-- GALERÍA -->
+<section id="galeria" class="py-5 bg-light text-dark text-center">
+  <div class="container">
+    <h2>Galería</h2>
+    <div class="row mt-4">
+      <div class="col-md-4 mb-3"><img src="foto1.jpg" class="img-fluid rounded"></div>
+      <div class="col-md-4 mb-3"><img src="foto2.jpg" class="img-fluid rounded"></div>
+      <div class="col-md-4 mb-3"><img src="foto3.jpg" class="img-fluid rounded"></div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEOS -->
+<section id="videos" class="py-5 bg-dark text-center">
+  <div class="container">
+    <h2>Videos</h2>
+    <div class="row mt-4">
+      <div class="col-md-4 mb-3">
+        <iframe class="w-100" height="200" src="https://www.youtube.com/embed/VIDEO1" frameborder="0" allowfullscreen></iframe>
+      </div>
+      <div class="col-md-4 mb-3">
+        <iframe class="w-100" height="200" src="https://www.youtube.com/embed/VIDEO2" frameborder="0" allowfullscreen></iframe>
+      </div>
+      <div class="col-md-4 mb-3">
+        <iframe class="w-100" height="200" src="https://www.youtube.com/embed/VIDEO3" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESERVA -->
+<section id="reserva" class="bg-light text-dark py-5">
+  <div class="container">
+    <h2 class="text-center mb-4">Reservá tu clase</h2>
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <form id="formReserva" class="p-4 rounded bg-white shadow">
+          <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="nombre" placeholder="Tu nombre" required>
+          </div>
+          <div class="mb-3">
+            <label for="fechaHora" class="form-label">Fecha y Hora</label>
+            <input type="datetime-local" class="form-control" id="fechaHora" required>
+          </div>
+          <button type="submit" class="btn-tango w-100">Confirmar Reserva</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHATSAPP flotante -->
+<div class="whatsapp-float" style="position:fixed;bottom:20px;right:20px;z-index:100;">
+  <a href="https://wa.me/5492364626965" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" width="60" height="60" alt="WhatsApp" style="border-radius:50%;box-shadow:0 3px 10px rgba(0,0,0,0.3);">
+  </a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>Sígueme en redes</p>
+  <a href="https://www.instagram.com/tuusuario" target="_blank"><i class="bi bi-instagram"></i></a>
+  <a href="https://www.facebook.com/tuusuario" target="_blank"><i class="bi bi-facebook"></i></a>
+  <p class="mt-3">&copy; 2025 Francisco Zeni - Todos los derechos reservados</p>
+</footer>
+
+<!-- JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+document.getElementById("formReserva").addEventListener("submit", function(e){
+  e.preventDefault();
+
+  const nombre = document.getElementById("nombre").value;
+  const fechaHora = document.getElementById("fechaHora").value;
+
+  const telefono = "5492364626965"; // ⚠️ tu número de WhatsApp con código de país
+  const mensaje = `Hola, soy ${nombre}. Quiero reservar una clase el ${fechaHora}.`;
+  const url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
+
+  window.open(url, "_blank");
+  alert("✅ Tu reserva fue enviada a WhatsApp.");
+});
+</script>
+</body>
+</html>
