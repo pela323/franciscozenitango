@@ -168,6 +168,80 @@
     opacity: 1;
     transform: translateY(0);
   }
+
+  header .content { padding: 40px; border-radius: 10px; max-width: 500px; }
+  .btn-tango {
+    background-color: #7b0b01; color: #f4f4f4; border-radius: 30px;
+    padding: 10px 25px; border: 1px solid #d4af37; transition: 0.3s;
+  }
+  .btn-tango:hover { background-color: #a4120e; color: #fff; }
+  section { padding: 60px 0; }
+  .bg-light { background-color: #1a1a1a !important; }
+  .schedule {
+    background: #0c0c0c; border-radius: 10px; padding: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+  }
+  .contact-icons a {
+    font-size: 2rem; margin: 0 10px; color: #d4af37; transition: transform 0.3s;
+  }
+  .contact-icons a:hover { transform: scale(1.2); }
+  .whatsapp-float {
+    position: fixed; bottom: 20px; right: 20px; z-index: 100;
+  }
+  .whatsapp-float img {
+    width: 60px; height: 60px; border-radius: 50%; box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+  }
+
+  /* 🎨 FORMULARIO DE RESERVA */
+  #formReserva {
+    background: rgba(12,12,12,0.9);
+    padding: 25px;
+    border-radius: 15px;
+    border: 1px solid #d4af37;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+    animation: fadeInUp 1s ease;
+  }
+  #formReserva label {
+    color: #d4af37;
+    font-weight: 600;
+  }
+  #formReserva input, #formReserva select {
+    background: #1a1a1a;
+    color: #f4f4f4;
+    border: 1px solid #d4af37;
+    border-radius: 10px;
+    padding: 10px;
+  }
+  #formReserva input:focus, #formReserva select:focus {
+    outline: none;
+    border-color: #f7d774;
+    box-shadow: 0 0 8px rgba(212,175,55,0.7);
+  }
+  #formReserva button {
+    background-color: #d4af37;
+    color: #0c0c0c;
+    font-weight: bold;
+    border-radius: 30px;
+    padding: 12px;
+    transition: 0.3s;
+    border: none;
+  }
+  #formReserva button:hover {
+    background-color: #f7d774;
+    color: #0c0c0c;
+  }
+
+  /* Animación entrada */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    header .content { max-width: 100%; text-align: center; }
+    #formReserva { padding: 20px; }
+  }
 </style>
 </head>
 <body>
@@ -391,5 +465,23 @@
   }
 </script>
 
+<!-- Script Reserva WhatsApp -->
+<script>
+document.getElementById("formReserva").addEventListener("submit", function(e){
+  e.preventDefault();
+
+  const nombre = document.getElementById("nombre").value;
+  const dia = document.getElementById("dia").value;
+  const horario = document.getElementById("horario").value;
+
+  // ⚠️ Poné tu número real de WhatsApp en formato internacional
+  const telefono = "5492364626965";
+
+  const mensaje = `Hola, soy ${nombre}. Quiero reservar una clase el día ${dia} a las ${horario}.`;
+  const url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
+
+  window.open(url, "_blank");
+});
+</script>
 </body>
 </html>
