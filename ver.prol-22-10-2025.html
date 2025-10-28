@@ -18,6 +18,9 @@
 
 <!-- ================== ESTILOS ================== -->
 <style>
+  * {
+  transition: all 0.3s ease-in-out;
+}
 /* -------------------- ESTILOS GENERALES -------------------- */
 body {
   font-family:'Poppins',sans-serif;
@@ -26,8 +29,59 @@ body {
   scroll-behavior:smooth;
   overflow-x:hidden;
   letter-spacing: 2px;
+
+  /**background: linear-gradient(180deg, #000 0%, #111 100%);***/
+
 }
 h1,h2,h3,h4,h5{font-family:'Montserrat',sans-serif;color:#c8b273;transition:all 0.8s ease;}
+
+h2 {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 10px;
+}
+
+h2::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: #c8b273;
+  border-radius: 3px;
+  transition: width 0.5s ease;
+}
+
+h2:hover::after {
+  width: 180px;
+}
+
+section p {
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: justify;
+}
+
+/* --- Mejora visual de párrafos --- */
+p {
+  font-size: 1.1rem !important;          /* Tamaño cómodo en escritorio */
+  line-height: 1.8 !important;           /* Espaciado entre líneas, más aireado */
+  margin-bottom: 1.2rem !important;      /* Separación entre párrafos */
+  color: #ddd;                /* Texto más suave, menos blanco puro */
+  letter-spacing: 0.5px !important;      /* Separación leve entre letras */
+}
+
+
+
+/* --- Decoradores visuales --- */
+.text-gold { color: #c8b273; font-weight: 600; }
+.text-highlight { background: rgba(200,178,115,0.1); padding: 2px 6px; border-radius: 4px; }
+
+section .row { margin-bottom: 40px; }
+
 a{text-decoration:none;}
 section{padding:60px 0;}
 .bg-light{background:#000!important;}/*background:#f9f9f9!important;*/
@@ -145,7 +199,7 @@ header{position:relative;width:100%;overflow:hidden;}
   /*position: absolute;
   top: 0;
   left: 0;*/
-  width: 100%;
+  width: 95%;
   height: 100%;
   /*object-fit: cover;*/ /* Hace que el video cubra todo el espacio del contenedor sin deformarse */
   /*z-index: -1;*/ /* Envía el video al fondo */
@@ -154,15 +208,15 @@ header{position:relative;width:100%;overflow:hidden;}
 
 /*------ video ------ */
 .video-container {
-  width: 100%;
-  height: 100%;
+  width: 95%;
+  height: 95%;
   overflow: hidden;
   border-radius: 10px; /* opcional, para esquinas redondeadas */
 }
 
 .video-container video {
-  width: 100%;
-  height: 100%;
+  width: 95%;
+  height: 95%;
   object-fit: cover; /* hace que el video se recorte proporcionalmente para llenar el contenedor */
   display: block;
 }
@@ -214,6 +268,16 @@ header{position:relative;width:100%;overflow:hidden;}
   transform:scale(1.05);
 }
 
+/* --- Separador dorado elegante --- */
+.gold-divider {
+  width: 120px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #c8b273, transparent);
+  margin: 30px auto;
+  border-radius: 5px;
+  opacity: 0.8;
+}
+
 /* -------------------- REDES -------------------- */
 .social-icons a{font-size:28px;margin:0 10px;color:#333;transition:.3s;}
 .social-icons a:hover{color:#B22222;transform:scale(1.2);}
@@ -225,8 +289,30 @@ footer{background:#000;padding:20px 0;text-align:center;color:#555;}
 .whatsapp-float{position:fixed;bottom:20px;right:20px;z-index:100;}
 .whatsapp-float img{width:60px;height:60px;border-radius:50%;box-shadow:0 3px 10px rgba(0,0,0,.3);}
 
+
+.col-md-6 img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
 /* -------------------- MEDIA QUERIES -------------------- */
 @media(max-width:768px){
+   p {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  /* --- Espacio lateral entre texto e imagen --- */
+  .row.align-items-center .col-md-6:first-child {
+    padding-right: 30px;
+  }
+  .row.align-items-center .col-md-6:last-child {
+    padding-left: 30px;
+  }
+
+
+
   header .presentation{text-align:center;padding:40px 20px;}
   #langSelector{margin-top:10px;text-align:center;justify-content:center;}
   /* Estilo para el contenedor del texto */
@@ -250,6 +336,26 @@ footer{background:#000;padding:20px 0;text-align:center;color:#555;}
   letter-spacing: 2px;
 }
 }
+
+/* --- Borde dorado entre texto e imagen --- */
+@media (min-width: 768px) {
+  .row.align-items-center .col-md-6:first-child {
+    position: relative;
+  }
+
+  .row.align-items-center .col-md-6:first-child::after {
+    content: "";
+    position: absolute;
+    right: -15px;
+    top: 10%;
+    width: 2px;
+    height: 80%;
+    margin: 20px;
+    background: linear-gradient(to bottom, transparent, #c8b273, transparent);
+    opacity: 0.7;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -300,12 +406,12 @@ footer{background:#000;padding:20px 0;text-align:center;color:#555;}
   <img src="img/logo2.png" alt="logo" class="mb-3" style="width:200px;height:190px;">
   <!--<h1 data-key="titulo1">Descubrí la esencia del Tango</h1>
   <h4 class="mt-3" data-key="subtitulo1">Clases, Shows y Pasión por el Baile</h4>-->
-  <p class="mt-3" data-key="descripcion1">Soy <strong>Fran</strong>, bailarín y profesor de tango. Enseño el arte del tango a personas de todo el mundo, desde principiantes hasta profesionales, para que sientan la verdadera conexión porteña y descubrir una de las culturas mas distinguidas mundialmente.</p>
+  <p class="mt-3" data-key="descripcion1">Soy <span class="text-gold">Fran</span>, bailarín y profesor de tango. Enseño el arte del tango a personas de todo el mundo, desde principiantes hasta profesionales, <span class="text-highlight">para que sientan la verdadera conexión porteña </span> y descubrir una de las culturas mas distinguidas mundialmente.</p>
   <a href="#calendario" class="btn btn-tango mt-3" data-key="boton_reserva">Reservá tu clase privada</a>
 </section>
 
-<br>
-<br>
+<!-- Línea dorada -->
+<div class="gold-divider"></div>
 
 <!-- ================== SOBRE MÍ ================== -->
 <section id="biografia" class="bg-light fade-slide">
@@ -321,11 +427,10 @@ footer{background:#000;padding:20px 0;text-align:center;color:#555;}
   </div>
 </div>
 
-<br>
 
 <div class="col-md-6 text-start fade-slide">
 <p data-key="descripcion_sobre">
-  Sobre Francisco Zeni
+  Sobre <span class="text-gold"></span>Francisco Zeni</span>
   Nacido en Buenos Aires, crecí rodeado del tango y su energía única.
   Hace más de 15 años que me dedico profesionalmente a bailar, enseñar y compartir esta pasión con el mundo.
 He participado en espectáculos, festivales mundiales y clases con alumnos de más de 30 países
@@ -334,9 +439,6 @@ Mi objetivo es transmitir no solo la técnica, sino también la emoción, la his
 </div>
 </div>
 </section>
-
-<br>
-<br>
 
 <!-- ================== CLASES ================== -->
 <section id="clases" class="bg-light fade-slide">
@@ -353,18 +455,16 @@ Mi objetivo es transmitir no solo la técnica, sino también la emoción, la his
     </ul>
   </div>
 
-  <br>
+  
 
-<div class="col-md-6 text-center fade-slide">
-  <img src="img/clase.jpg" alt="Taxi Dancer" class="img-fluid rounded shadow">
+<div class="col-md-6 text-center fade-slide" style="height: 880px !important;">
+  <img src="img/clase.jpg" alt="Taxi Dancer" class="img-fluid rounded shadow" style="width: 100% !important; height: 100% !important; object-fit: cover;">
 
   </div>
   </div>
   </div>
 </section>
 
-<br>
-<br>
 
 <!-- ================== TAXI ================== -->
 <section id="taxi" class="bg-light fade-slide">
@@ -375,7 +475,7 @@ Mi objetivo es transmitir no solo la técnica, sino también la emoción, la his
 <img src="img/taxi-dancer.jpg" alt="Taxi Tango" class="img-fluid rounded shadow">
 </div>
 
-<br>
+
 
 <div class="col-md-6 fade-slide">
 <p data-key="taxi_texto">Te acompaño a la milonga para bailar los tangos que mas te gusten y sentirte comoda en el ambiente del Tango.</p>
@@ -385,8 +485,7 @@ Mi objetivo es transmitir no solo la técnica, sino también la emoción, la his
 </div>
 </section>
 
-<br>
-<br>
+
 
 <!-- FRASE -->
 <section class="text-center my-5">
@@ -394,8 +493,7 @@ Mi objetivo es transmitir no solo la técnica, sino también la emoción, la his
   <blockquote class="fst-italic" style="color:var(--accent);font-size:1.15rem" data-i18n="quote">“ Viví una auténtica experiencia tanguera: aprendé los pasos básicos, disfrutá una práctica con música en vivo y descubrí los secretos del abrazo porteño. ”</blockquote>
 </section>
 
-<br>
-<br>
+
 
 <!-- ================== SHOWS ================== -->
 <section id="shows" class="fade-slide">
@@ -411,7 +509,7 @@ Mi objetivo es transmitir no solo la técnica, sino también la emoción, la his
   </div>
 </div>
 
-<br>
+
 
 <div class="col-md-6 fade-slide">
 <p data-key="shows_texto">Ofrezco shows de tango para eventos, festivales y producciones. Trabajo con bailarinas profesionales, adaptando el show al estilo y duración que el cliente necesita.</p>
@@ -420,13 +518,12 @@ Mi objetivo es transmitir no solo la técnica, sino también la emoción, la his
 </div>
 </section>
 
-<br>
-<br>
+
 
 <!-- ================== TESTIMONIOS ================== -->
 <section id="testimonios" class="bg-light text-center fade-slide">
 <div class="container">
-<h2 class="mb-4" data-key="opiniones">Testimonios o Opiniones</h2>
+<h2 class="mb-4" data-key="opiniones">Opiniones</h2><br>
 <img src="img/logo_google.png" alt="Google Reviews" style="width:100px;"><br>
 <div class="text-warning fs-4 mb-3">★★★★★</div>
 <div id="opiniones" class="carousel slide" data-bs-ride="carousel">
@@ -439,9 +536,6 @@ Mi objetivo es transmitir no solo la técnica, sino también la emoción, la his
 </div>
 </section>
 
-<br>
-<br>
-
 <!-- ================== GALERÍA ================== -->
 <section id="fotos" class="container text-center fade-slide">
 <h2 class="mb-4" data-key="galeria">Galería</h2>
@@ -452,8 +546,7 @@ Mi objetivo es transmitir no solo la técnica, sino también la emoción, la his
 </div>
 </section>
 
-<br>
-<br>
+
 
 <!-- ================== VIDEOS ================== -->
 <!--<section id="videos" class="text-center fade-slide">
