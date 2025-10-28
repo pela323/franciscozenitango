@@ -25,6 +25,7 @@ body {
   background:#000;
   scroll-behavior:smooth;
   overflow-x:hidden;
+  letter-spacing: 2px;
 }
 h1,h2,h3,h4,h5{font-family:'Montserrat',sans-serif;color:#c8b273;transition:all 0.8s ease;}
 a{text-decoration:none;}
@@ -37,7 +38,13 @@ section{padding:60px 0;}
 .navbar-brand{font-weight:bold;color:#c8b273!important;font-size:1.5rem;}
 .nav-link{color:#c8b273!important;transition:color .3s;}
 .nav-link:hover{color:#B22222!important;}
-.navbar img.logo{width:50px;height:50px;border-radius:50%;border:2px solid #c8b273;margin-right:10px;}
+.navbar img.logo{
+  width: 80px;
+  height: 80px;
+  /*border-radius:50%;
+  border:2px solid #c8b273;*/
+  margin-right:10px;
+}
 #langSelector{margin-left:auto;font-weight:600;display:flex;align-items:center;}
 #langSelector span{
     cursor:pointer;
@@ -54,7 +61,51 @@ section{padding:60px 0;}
 
 /* -------------------- HEADER VIDEO -------------------- */
 header{position:relative;width:100%;overflow:hidden;}
-header video{width:100%;height:auto;display:block;}
+/*header video{width:100%;height:auto;display:block;}*/
+
+/* Estilo para el contenedor del video */
+#inicio {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* Esto asegura que el header ocupe toda la altura de la ventana */
+  overflow: hidden; /* Elimina cualquier parte del video que sobresalga */
+}
+
+/* Estilo para el video */
+#inicio video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Hace que el video cubra todo el espacio del contenedor sin deformarse */
+  z-index: -1; /* Envía el video al fondo */
+}
+
+/* Estilo para el contenedor del texto */
+.overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Centra el texto en el medio del video */
+  text-align: center;
+  color: white; /* Puedes cambiar el color del texto */
+  font-family: Arial, sans-serif;
+}
+
+/* Estilo para el título */
+.overlay h1 {
+  font-size: 3em;
+  margin: 0;
+  letter-spacing: 5px;
+}
+
+/* Estilo para el párrafo */
+.overlay p {
+  font-size: 1.2em;
+  margin-top: 10px;
+  letter-spacing: 2px;
+}
 
 /* -------------------- PRESENTACIÓN -------------------- */
 .presentation{
@@ -81,6 +132,18 @@ header video{width:100%;height:auto;display:block;}
 .btn-tango:hover{
   background:#B22222;
   transform:scale(1.08);
+}
+
+/* -------------------- SOBRE MÍ ----------------- */
+/* Estilo para el video */
+#biografia video {
+  /*position: absolute;
+  top: 0;
+  left: 0;*/
+  width: 100%;
+  height: 100%;
+  /*object-fit: cover;*/ /* Hace que el video cubra todo el espacio del contenedor sin deformarse */
+  /*z-index: -1;*/ /* Envía el video al fondo */
 }
 
 /* -------------------- ANIMACIONES SCROLL -------------------- */
@@ -135,7 +198,7 @@ header video{width:100%;height:auto;display:block;}
 .social-icons a:hover{color:#B22222;transform:scale(1.2);}
 
 /* -------------------- FOOTER -------------------- */
-footer{background:#f0f0f0;padding:20px 0;text-align:center;color:#555;}
+footer{background:#000;padding:20px 0;text-align:center;color:#555;}
 
 /* -------------------- WHATSAPP FLOTANTE -------------------- */
 .whatsapp-float{position:fixed;bottom:20px;right:20px;z-index:100;}
@@ -154,7 +217,7 @@ footer{background:#f0f0f0;padding:20px 0;text-align:center;color:#555;}
 <nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm">
 <div class="container">
   <a class="navbar-brand d-flex align-items-center" href="#inicio">
-    <img src="img/logo.png" alt="logo" class="logo">
+    <img src="img/logo1.png" alt="logo" class="logo">
     Francisco Zeni
   </a>
   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -164,11 +227,11 @@ footer{background:#f0f0f0;padding:20px 0;text-align:center;color:#555;}
     <ul class="navbar-nav me-auto">
       <li class="nav-item"><a class="nav-link" href="#biografia" data-key="sobre_mi">Sobre mí</a></li>
       <li class="nav-item"><a class="nav-link" href="#clases" data-key="clases">Clases</a></li>
-      <li class="nav-item"><a class="nav-link" href="#taxi" data-key="taxi">Taxi</a></li>
+      <!--<li class="nav-item"><a class="nav-link" href="#taxi" data-key="taxi">Taxi</a></li>--->
       <li class="nav-item"><a class="nav-link" href="#shows" data-key="shows">Shows</a></li>
-      <li class="nav-item"><a class="nav-link" href="#testimonios" data-key="opiniones">Opiniones</a></li>
+      <!--<li class="nav-item"><a class="nav-link" href="#testimonios" data-key="opiniones">Opiniones</a></li>-->
       <li class="nav-item"><a class="nav-link" href="#fotos" data-key="galeria">Galería</a></li>
-      <li class="nav-item"><a class="nav-link" href="#videos" data-key="videos">Videos</a></li>
+      <!--<li class="nav-item"><a class="nav-link" href="#videos" data-key="videos">Videos</a></li>-->
       <li class="nav-item"><a class="nav-link" href="#calendario" data-key="horarios">Horarios</a></li>
     </ul>
     <!-- ================== SELECTOR DE IDIOMA ================== -->
@@ -184,14 +247,20 @@ footer{background:#f0f0f0;padding:20px 0;text-align:center;color:#555;}
   <video autoplay muted loop playsinline preload="auto">
     <source src="img/inicio.mp4" type="video/mp4">
   </video>
+  <!-- Contenedor para el texto sobrepuesto -->
+  <div class="overlay">
+    <h1>Descubrí la esencia del Tango con un bailarín profesional de Buenos Aires</h1>
+    <p>Clases privadas, Shows, Taxi dancer, Milongas, Experiencias de Tango en Buenos Aires.</p>
+  </div>
 </header>
 
 <!-- ================== PRESENTACIÓN ================== -->
 <section class="presentation fade-slide text-center" id="presentacion">
-  <h1 data-key="titulo1">Descubrí la esencia del Tango</h1>
-  <h4 class="mt-3" data-key="subtitulo1">Clases, Shows y Pasión por el Baile</h4>
-  <p class="mt-3" data-key="descripcion1">Soy <strong>Francisco Zeni</strong>, bailarín y profesor de tango. Enseño el arte de conectar cuerpo, música y emoción en cada paso.</p>
-  <a href="#calendario" class="btn btn-tango mt-3" data-key="boton_reserva">Reservá</a>
+  <img src="img/logo2.png" alt="logo" class="mb-3" style="width:200px;height:150px;">
+  <!--<h1 data-key="titulo1">Descubrí la esencia del Tango</h1>
+  <h4 class="mt-3" data-key="subtitulo1">Clases, Shows y Pasión por el Baile</h4>-->
+  <p class="mt-3" data-key="descripcion1">Soy <strong>Fran</strong>, bailarín y profesor de tango. Enseño el arte del tango a personas de todo el mundo, desde principiantes hasta profesionales, para que sientan la verdadera conexión porteña y descubrir una de las culturas mas distinguidas mundialmente.</p>
+  <a href="#calendario" class="btn btn-tango mt-3" data-key="boton_reserva">Reservá tu clase privada</a>
 </section>
 
 <!-- ================== SOBRE MÍ ================== -->
@@ -208,49 +277,66 @@ footer{background:#f0f0f0;padding:20px 0;text-align:center;color:#555;}
 </div>
 </div>
 <div class="col-md-6 text-start fade-slide">
-<p data-key="descripcion_sobre">Soy un apasionado del tango, con años de experiencia compartiendo esta danza única que une técnica, historia y emoción. Mis clases están diseñadas para todo nivel.</p>
+<p data-key="descripcion_sobre">
+  Sobre Francisco Zeni
+  Nacido en Buenos Aires, crecí rodeado del tango y su energía única.
+  Hace más de 15 años que me dedico profesionalmente a bailar, enseñar y compartir esta pasión con el mundo.
+He participado en espectáculos, festivales mundiales y clases con alumnos de más de 30 países
+Mi objetivo es transmitir no solo la técnica, sino también la emoción, la historia y la conexión que hacen del tango un lenguaje universal.</p>
 </div>
 </div>
 </div>
 </section>
 
 <!-- ================== CLASES ================== -->
-<section id="clases" class="text-center fade-slide">
+<section id="clases" class="bg-light fade-slide">
 <div class="container">
-<h2 data-key="clases">Clases</h2>
-<p class="lead" data-key="clases_desc">Diseño cada encuentro para conectar cuerpo, técnica y sentimiento.</p>
-<ul class="list-unstyled mt-4 fade-slide">
-<li>• Clases Grupales</li>
-<li>• Clases Privadas</li>
-<li>• Todos los Niveles</li>
-</ul>
-</div>
+<h2 class="text-center mb-5" data-key="clases">Clases de Tango</h2>
+<div class="row align-items-center">
+  <div class="col-md-6 fade-slide">
+    <p class="lead" data-key="clases_desc">Diseño cada clase para adaptarme a tu nivel y a tu ritmo, combinando técnica, musicalidad y conexión.</p>
+    <ul class="list-unstyled mt-4 fade-slide">
+    <li>• Clases personalizadas (individuales o en pareja)</li>
+    <li>• Todos los niveles</li>
+    <li>• En español o inglés</li>
+    <li>• En estudio o a domicilio</li>
+    </ul>
+  </div>
+
+<div class="col-md-6 text-center fade-slide">
+  <img src="img/clase.jpg" alt="Taxi Dancer" class="img-fluid rounded shadow">
+
+  </div>
+  </div>
+  </div>
 </section>
 
 <!-- ================== TAXI ================== -->
 <section id="taxi" class="bg-light fade-slide">
 <div class="container">
-<h2 class="text-center mb-5" data-key="taxi">Taxi Tango</h2>
+<h2 class="text-center mb-5" data-key="taxi">Taxi Dancer</h2>
 <div class="row align-items-center">
+  <div class="col-md-6 text-center fade-slide">
+<img src="img/taxi-dancer.jpg" alt="Taxi Tango" class="img-fluid rounded shadow">
+</div>
 <div class="col-md-6 fade-slide">
-<p data-key="taxi_texto">Te acompaño en milongas, festivales o eventos, asegurando una experiencia inolvidable de tango.</p>
+<p data-key="taxi_texto">Te acompaño a la milonga para bailar los tangos que mas te gusten y sentirte comoda en el ambiente del Tango.</p>
 </div>
-<div class="col-md-6 text-center fade-slide">
-<img src="img/img-1.png" alt="Taxi Tango" class="img-fluid rounded shadow">
-</div>
+
 </div>
 </div>
 </section>
 
 <!-- FRASE -->
-  <section class="text-center my-5">
-    <blockquote class="fst-italic" style="color:var(--accent);font-size:1.15rem" data-i18n="quote">“Viví el tango, sentí su esencia y dejate llevar por su abrazo.”</blockquote>
-  </section>
+<section class="text-center my-5">
+  <h2 class="text-center mb-5" data-key="taxi">Tu primera experiencia en el Tango</h2>
+  <blockquote class="fst-italic" style="color:var(--accent);font-size:1.15rem" data-i18n="quote">“ Viví una auténtica experiencia tanguera: aprendé los pasos básicos, disfrutá una práctica con música en vivo y descubrí los secretos del abrazo porteño. ”</blockquote>
+</section>
 
 <!-- ================== SHOWS ================== -->
 <section id="shows" class="fade-slide">
 <div class="container">
-<h2 class="text-center mb-5" data-key="shows">Shows</h2>
+<h2 class="text-center mb-5" data-key="shows">Shows y Contrataciones</h2>
 <div class="row align-items-center">
 <div class="col-md-6 mb-3 fade-slide">
 <div class="ratio ratio-16x9 shadow">
@@ -261,7 +347,7 @@ footer{background:#f0f0f0;padding:20px 0;text-align:center;color:#555;}
 </div>
 </div>
 <div class="col-md-6 fade-slide">
-<p data-key="shows_texto">Ofrezco espectáculos personalizados de tango para eventos, festivales y producciones artísticas.</p>
+<p data-key="shows_texto">Ofrezco shows de tango para eventos, festivales y producciones. Trabajo con bailarinas profesionales, adaptando el show al estilo y duración que el cliente necesita.</p>
 </div>
 </div>
 </div>
@@ -270,14 +356,14 @@ footer{background:#f0f0f0;padding:20px 0;text-align:center;color:#555;}
 <!-- ================== TESTIMONIOS ================== -->
 <section id="testimonios" class="bg-light text-center fade-slide">
 <div class="container">
-<h2 class="mb-4" data-key="opiniones">Opiniones</h2>
-<img src="img/google-logo.png" alt="Google Reviews" style="width:100px;"><br>
+<h2 class="mb-4" data-key="opiniones">Testimonios o Opiniones</h2>
+<img src="img/logo_google.png" alt="Google Reviews" style="width:100px;"><br>
 <div class="text-warning fs-4 mb-3">★★★★★</div>
 <div id="opiniones" class="carousel slide" data-bs-ride="carousel">
 <div class="carousel-inner">
-<div class="carousel-item active"><p>"Una experiencia maravillosa, aprendí a disfrutar el tango desde el alma."</p></div>
-<div class="carousel-item"><p>"Excelente profesor, muy dedicado y paciente. Lo recomiendo 100%."</p></div>
-<div class="carousel-item"><p>"Las clases son divertidas, técnicas y llenas de pasión. ¡Imperdibles!"</p></div>
+<div class="carousel-item active"><p>“ Excelente profesor, me ayudó a conectar con la música de una manera única. ”</p></div>
+<div class="carousel-item"><p>“ Una experiencia inolvidable. Fran transmite el tango con pasión y mucha paciencia. ”</p></div>
+<div class="carousel-item"><p>“ Excelente profesor, muy dedicado y paciente. Lo recomiendo 100%. ”</p></div>
 </div>
 </div>
 </div>
@@ -287,14 +373,14 @@ footer{background:#f0f0f0;padding:20px 0;text-align:center;color:#555;}
 <section id="fotos" class="container text-center fade-slide">
 <h2 class="mb-4" data-key="galeria">Galería</h2>
 <div class="row gallery g-3">
-<div class="col-md-4 fade-slide"><a href="img/img1.png" data-lightbox="galeria"><img src="img/img1.png" class="img-fluid"></a></div>
-<div class="col-md-4 fade-slide"><a href="img/img2.png" data-lightbox="galeria"><img src="img/img2.png" class="img-fluid"></a></div>
-<div class="col-md-4 fade-slide"><a href="img/img3.png" data-lightbox="galeria"><img src="img/img3.png" class="img-fluid"></a></div>
+<div class="col-md-4 fade-slide"><a href="img/img-1.JPG" data-lightbox="galeria"><img src="img/img-1.JPG" class="img-fluid"></a></div>
+<!--<div class="col-md-4 fade-slide"><a href="img/img-2.png" data-lightbox="galeria"><img src="img/img-2.png" class="img-fluid"></a></div>-->
+<div class="col-md-4 fade-slide"><a href="img/img-3.JPG" data-lightbox="galeria"><img src="img/img-3.JPG" class="img-fluid"></a></div>
 </div>
 </section>
 
 <!-- ================== VIDEOS ================== -->
-<section id="videos" class="text-center fade-slide">
+<!--<section id="videos" class="text-center fade-slide">
 <div class="container">
 <h2 class="mb-4" data-key="videos">Videos</h2>
 <div class="row justify-content-center g-4">
@@ -303,7 +389,7 @@ footer{background:#f0f0f0;padding:20px 0;text-align:center;color:#555;}
 <div class="col-md-4 fade-slide"><div class="ratio ratio-4x3"><iframe src="https://www.youtube.com/embed/4MJfodXE83s" allowfullscreen></iframe></div></div>
 </div>
 </div>
-</section>
+</section>-->
 
 <!-- ================== HORARIOS Y FORMULARIO ================== -->
 <section id="calendario" class="bg-light text-center fade-slide">
@@ -342,7 +428,7 @@ footer{background:#f0f0f0;padding:20px 0;text-align:center;color:#555;}
 <a href="https://instagram.com/tu_usuario" target="_blank"><i class="bi bi-instagram"></i></a>
 <a href="https://facebook.com/tu_usuario" target="_blank"><i class="bi bi-facebook"></i></a>
 <a href="https://youtube.com/tu_usuario" target="_blank"><i class="bi bi-youtube"></i></a>
-<a href="https://wa.me/5492364626965" target="_blank"><i class="bi bi-whatsapp"></i></a>
+<a href="https://wa.me/+5491124513524" target="_blank"><i class="bi bi-whatsapp"></i></a>
 </div>
 </div>
 </section>
@@ -354,7 +440,7 @@ footer{background:#f0f0f0;padding:20px 0;text-align:center;color:#555;}
 
 <!-- ================== WHATSAPP FLOTANTE ================== -->
 <div class="whatsapp-float">
-<a href="https://wa.me/549236424513524" target="_blank">
+<a href="https://wa.me/+5491124513524" target="_blank">
 <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
 </a>
 </div>
@@ -383,10 +469,10 @@ document.getElementById("formReserva").addEventListener("submit",function(e){
   const n=document.getElementById("nombre").value;
   const d=document.getElementById("dia").value;
   const h=document.getElementById("horario").value;
-  const telefono="5492364626965";
+  const telefono="+5491124513524";
   const mensaje=`Hola, soy ${n}. Quiero reservar una clase el día ${d} a las ${h}.`;
   window.open(`https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`,"_blank");
-});
+});4923
 
 // ================== TRADUCCIONES ES/EN ==================
 const translations = {
